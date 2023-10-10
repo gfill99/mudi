@@ -1,0 +1,42 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+		<div class="container">
+			<div th:replace="~{base :: titulo('Novo pedido')}"></div>
+			<div class="card mt-3">
+				<form th:action="@{/pedido/novo}" th:object="${requisicaoNovoPedido}" class="card-body" method="POST">
+					<div class="form-group">
+						<label for="nomeProduto">Produto</label>
+						<input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do produto"/>
+						<small>Informe qual o nome do produto.</small>
+						<div class="invalid-feedback" th:errors="*{nomeProduto}">
+							Campo não preenchido
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlProduto">Url</label>
+						<input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Url do produto"/>
+						<small>Procure em um site o produto que você deseja e cole a url da página aqui.</small>
+						<div class="invalid-feedback" th:errors="*{urlProduto}">
+							Campo não preenchido
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlImagem">Imagem</label>
+						<input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="Adicione detalhes importantes para ajudar o comprador"/>
+						<small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores.</small>
+						<div class="invalid-feedback" th:errors="*{urlImagem}">
+							Campo não preenchido
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="descricao">Descrição</label>
+						<textarea th:field="*{descricao}" class="form-control mb-3" placeholder="Descrição"></textarea>
+					</div>
+						<button class="btn btn-primary" type="submit">Cadastrar</button>
+				</form>
+			</div>
+		</div>	
+	</body>
+</html>
